@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sebastian Philip Ashinyo | Portfolio</title>
+  <meta name="description" content="Portfolio homepage for Sebastian Philip Ashinyo, Computer Science student, builder, and entrepreneur." />
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #101b2d;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #eef4ff;
+      --muted: #b9c6dd;
+      --accent: #67e8f9;
+      --accent-2: #fbbf24;
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(103, 232, 249, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(251, 191, 36, 0.10), transparent 24%),
+        linear-gradient(180deg, #07101d 0%, #0b1527 60%, #08111f 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+ 
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(8, 17, 31, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      font-size: 1.05rem;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #3b82f6);
+      color: #06111d;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 68px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(103, 232, 249, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(103, 232, 249, 0.18);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      margin: 0 0 16px;
+      letter-spacing: -1.6px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 720px;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .stat, .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--accent-2);
+      margin-bottom: 6px;
+    }
+
+    .hero-card {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(103,232,249,0.25), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .hero-card ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2vw, 2.2rem);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .project-title span {
+      color: var(--accent);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(103,232,249,0.12);
+    }
+
+    .timeline small {
+      color: var(--accent-2);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      padding: 26px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .footer-card,
+      .nav-inner {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">Sebastian<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Computer Science Student • Builder • Entrepreneur</div>
+        <h1>Sebastian Philip Ashinyo</h1>
+        <p>
+          I’m a Computer Science student at Kentucky State University focused on software development,
+          data analysis, entrepreneurship, and practical tech solutions. I enjoy building tools that solve
+          real problems, from loyalty-tech concepts to AI-driven community solutions.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View My Projects</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>CS</strong>
+            Student focused on software, data, and systems.
+          </div>
+          <div class="stat">
+            <strong>3+</strong>
+            Major project ideas in tech, AI, and entrepreneurship.
+          </div>
+          <div class="stat">
+            <strong>KSU</strong>
+            Kentucky State University academic portfolio.
+          </div>
+        </div>
+      </div>
+
+      <aside class="card hero-card">
+        <h3>What I’m Building</h3>
+        <p>
+          I’m interested in turning technical ideas into practical products, especially in fintech,
+          AI, community resilience, and student-focused technology.
+        </p>
+        <ul>
+          <li><strong>PointPilot</strong> — a loyalty points tracking platform with smart insights.</li>
+          <li><strong>FloodGuard AI</strong> — a concept for flood prediction and community safety.</li>
+          <li><strong>Portfolio Growth</strong> — expanding my work in software, research, and innovation.</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About Me</h2>
+          </div>
+          <p>
+            I blend technical skills with an entrepreneurial mindset. My interests include coding,
+            user-centered product design, data-driven decision making, and building solutions that can grow into real ventures.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Who I Am</h3>
+            <p>
+              I am a motivated student who enjoys learning by building. I like projects that connect technology
+              with business value, whether that means designing web experiences, organizing data, or planning startup ideas.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What Drives Me</h3>
+            <p>
+              I want to create meaningful technology, strengthen my software engineering skills, and keep growing into
+              opportunities in tech, product development, and entrepreneurship.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured Projects</h2>
+          </div>
+          <p>
+            These projects reflect my interests in product thinking, software development, and solving real-world problems.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="project-title">
+              <h3>PointPilot</h3>
+              <span>Fintech / Product</span>
+            </div>
+            <p>
+              A loyalty-points platform concept designed to help users track, organize, and optimize airline, retail,
+              restaurant, and bank rewards through a single dashboard.
+            </p>
+            <div class="tags">
+              <span class="tag">Dashboard Concept</span>
+              <span class="tag">User Experience</span>
+              <span class="tag">Startup Thinking</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-title">
+              <h3>FloodGuard AI</h3>
+              <span>AI / Community</span>
+            </div>
+            <p>
+              A project concept focused on using AI and data to support flood awareness, prevention, and community resilience.
+            </p>
+            <div class="tags">
+              <span class="tag">AI Concept</span>
+              <span class="tag">Public Impact</span>
+              <span class="tag">Hackathon Ready</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-title">
+              <h3>Academic Tech Portfolio</h3>
+              <span>Web / Data</span>
+            </div>
+            <p>
+              A growing body of work across programming, problem solving, database systems, analytics, and presentation-ready deliverables.
+            </p>
+            <div class="tags">
+              <span class="tag">Course Projects</span>
+              <span class="tag">Coding</span>
+              <span class="tag">Documentation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Skills</h2>
+          </div>
+          <p>
+            A mix of technical, academic, and creative strengths that support my growth as a developer and builder.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Programming & Tools</h3>
+            <p>HTML, CSS, JavaScript, SQL, GitHub, database design, and general software development workflows.</p>
+          </div>
+          <div class="card">
+            <h3>Data & Analysis</h3>
+            <p>Data organization, spreadsheet work, analysis, presentation building, and structured problem solving.</p>
+          </div>
+          <div class="card">
+            <h3>Product & Innovation</h3>
+            <p>Startup ideation, pitch thinking, UI planning, and turning concepts into practical digital experiences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Experience & Growth</h2>
+          </div>
+          <p>
+            My path is centered on learning, shipping projects, and building a strong foundation for long-term work in tech.
+          </p>
+        </div>
+
+        <div class="card timeline">
+          <div class="timeline-item">
+            <small>Current</small>
+            <h3>Computer Science Student at Kentucky State University</h3>
+            <p>Building academic and practical experience through coursework, technical assignments, and self-driven projects.</p>
+          </div>
+          <div class="timeline-item">
+            <small>Ongoing</small>
+            <h3>Entrepreneurial Product Development</h3>
+            <p>Exploring startup ideas in loyalty-tech, AI, and digital product strategy with a focus on real-world relevance.</p>
+          </div>
+          <div class="timeline-item">
+            <small>Growing</small>
+            <h3>Portfolio and Technical Brand</h3>
+            <p>Developing a personal brand that highlights coding, initiative, innovation, and the ability to create polished work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+          </div>
+          <p>
+            Replace the placeholder links below with your actual details before submitting your GitHub Pages site.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Get In Touch</h3>
+            <p>Email: fwsebastian23@gmail.com</p>
+            <p>GitHub: github.com/sebastian_phil</p>
+            <p>LinkedIn: https://www.linkedin.com/in/sebastian-philip-46753919a/</p>
+          </div>
+          <div class="card">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container card footer-card">
+      <div>
+        <strong>Sebastian Philip Ashinyo</strong><br />
+        <span>Built for GitHub Pages</span>
+      </div>
+      <div>© 2026 Personal Portfolio</div>
+    </div>
+  </footer>
+</body>
+</html>
